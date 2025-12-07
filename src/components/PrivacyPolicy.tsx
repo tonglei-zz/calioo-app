@@ -20,7 +20,7 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
         <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">
           🇺🇸 Calioo Privacy Policy (English Version)
         </h1>
-        <p className="text-slate-500 mb-8 font-medium">Last Updated: XX XX, 2025</p>
+        <p className="text-slate-500 mb-8 font-medium">Last Updated: 2025-12-07</p>
 
         <div className="space-y-8 text-slate-700 leading-relaxed">
           <div>
@@ -132,8 +132,8 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
           <section className="bg-slate-50 p-6 rounded-xl border border-slate-100">
             <h2 className="text-xl font-bold text-slate-900 mb-2">9. Contact Us</h2>
             <p className="mb-1">If you have any questions, please contact:</p>
-            <a href="mailto:support@calioo.app" className="font-semibold text-brand-600 hover:text-brand-700 transition-colors">
-              support@calioo.app
+            <a href="mailto:xxtonglei@gmail.com" className="font-semibold text-brand-600 hover:text-brand-700 transition-colors">
+              xxtonglei@gmail.com
             </a>
           </section>
         </div>
