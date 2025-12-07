@@ -335,7 +335,7 @@ const App: React.FC = () => {
             <span className="font-semibold">Calioo</span>
           </div>
 
-          <div className="flex gap-6 text-sm text-slate-500">
+          <div className="flex gap-6 text-sm text-slate-500 items-center">
             <button 
               onClick={() => setView('privacy')} 
               className={`hover:text-brand-600 transition-colors ${currentView === 'privacy' ? 'text-brand-600 font-medium' : ''}`}
@@ -349,6 +349,13 @@ const App: React.FC = () => {
             >
               Terms of Service
             </button>
+            <span className="text-slate-300">|</span>
+             <a
+              href="mailto:xxtonglei@gmail.com"
+              className="hover:text-brand-600 transition-colors"
+            >
+              Contact
+            </a>
           </div>
 
           <p className="text-slate-400 text-sm">
