@@ -184,7 +184,34 @@ const App: React.FC = () => {
   };
 
   const [currentView, setCurrentView] = useState<'home' | 'privacy' | 'terms'>(getHashView);
-  const [language, setLanguage] = useState<LanguageKey>('en');
+  
+  // Auto-detect language
+  const [language, setLanguage] = useState<LanguageKey>(() => {
+    if (typeof window === 'undefined') return 'en';
+    const lang = navigator.language.toLowerCase();
+    
+    // Specific mappings for regions or dialects
+    if (lang.startsWith('zh-tw') || lang.startsWith('zh-hk')) return 'zh-TW';
+    if (lang.startsWith('pt-br')) return 'pt-BR';
+    
+    // General mapping based on primary language code
+    const code = lang.split('-')[0];
+    
+    // Mapping for simple 'zh' to Simplified Chinese
+    if (code === 'zh') return 'zh';
+
+    // Check if the simple code exists in our supported list
+    // Note: 'pt' is not a direct key (only pt-BR), so standard pt will fallback to en unless we map it.
+    // 'zh-TW' is handled above.
+    const simpleSupported: LanguageKey[] = ['en', 'de', 'it', 'fr', 'ja', 'ko', 'es', 'ru', 'hi', 'ar'];
+    
+    if (simpleSupported.includes(code as any)) {
+      return code as LanguageKey;
+    }
+
+    return 'en';
+  });
+
   const [downloadUrl, setDownloadUrl] = useState(IOS_APP_STORE_URL);
   
   // Language Dropdown State
@@ -200,8 +227,6 @@ const App: React.FC = () => {
       setDownloadUrl(ANDROID_PLAY_STORE_URL);
     } else {
       // Default to iOS for iOS devices and Desktop (Windows/Mac)
-      // Usually landing pages default to App Store on desktop or show both, 
-      // but for a single button, iOS is a safe default for "Calioo" style apps unless detected otherwise.
       setDownloadUrl(IOS_APP_STORE_URL);
     }
   }, []);
